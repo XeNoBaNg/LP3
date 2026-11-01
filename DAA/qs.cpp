@@ -105,4 +105,46 @@ int main() {
     } while (choice != 3);
 
     return 0;
-}
+}
+/*
+================================================================================
+THEORETICAL CONCEPTS, HOW TO RUN & HOW TO EXPLAIN
+================================================================================
+1. THEORETICAL CONCEPTS:
+   - Divide-and-Conquer Algorithm:
+     1. Pick a pivot element.
+     2. Partition the array so all elements < pivot are to the left, and > pivot to the right.
+     3. Recursively sort the left and right subarrays.
+   - Deterministic Quick Sort:
+     * Uses a fixed pivot (e.g., arr[low] - first element).
+     * Worst-case occurs on already sorted or reverse-sorted input: O(n^2).
+     * Average-case: O(n log n).
+   - Randomized Quick Sort:
+     * Randomly picks an index between low and high, swaps with arr[low], then partitions.
+     * Prevents adversarial inputs from triggering the O(n^2) worst case.
+     * Expected running time is O(n log n) with extremely high probability.
+   - Space Complexity: O(log n) auxiliary stack space for recursion.
+
+2. HOW TO RUN:
+   - Compile: g++ qs.cpp -o qs
+   - Run    : ./qs          (Linux/macOS) or qs.exe (Windows)
+   - Menu   : Choose 1 for Deterministic, 2 for Randomized, 3 to Exit.
+   - Displays sorted output alongside comparison counts and swap counts!
+
+3. HOW TO EXPLAIN TO THE EXAMINER (30-SECOND VIVA PITCH):
+   "Sir/Madam, this program demonstrates Deterministic vs Randomized Quick Sort with step analysis:
+   - Both follow the Divide-and-Conquer paradigm.
+   - In deterministic quicksort, choosing the first element as pivot gives O(n^2) worst-case
+     time on sorted inputs because partitions become highly unbalanced (size 1 and n-1).
+   - In randomized quicksort, selecting a random pivot ensures balanced expected partitions,
+     yielding O(n log n) average performance regardless of the initial input order.
+   - We track and print total comparisons and swaps to empirically prove the efficiency."
+
+4. COMMON VIVA QUESTIONS:
+   Q: Why is Quick Sort preferred over Merge Sort for arrays?
+   A: Quick Sort is in-place (O(log n) auxiliary space vs O(n) for Merge Sort) and exhibits
+      excellent cache locality in virtual memory.
+   Q: What is the recurrence relation for average case?
+   A: T(n) = 2*T(n/2) + O(n), which resolves to O(n log n) by Master's Theorem.
+================================================================================
+*/
